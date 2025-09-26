@@ -1,100 +1,276 @@
-import { Twitter, Linkedin, Globe } from 'lucide-react';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
-const speakers = [
+// Import Swiper styles
+// @ts-ignore
+import "swiper/css";
+// @ts-ignore
+import "swiper/css/pagination";
+// @ts-ignore
+import "swiper/css/navigation";
+
+interface Speaker {
+  name: string;
+  title: string;
+  institution: string;
+  image: string;
+  type: "National" | "International";
+}
+
+const speakers: Speaker[] = [
   {
-    name: "Sarah Chen",
-    title: "CTO at TechCorp",
-    bio: "Leading AI innovation and cloud architecture with 15+ years of experience",
-    image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
-    social: { twitter: "#", linkedin: "#", website: "#" },
-    expertise: ["AI/ML", "Cloud Architecture"]
+    name: "Prof. (Dr.) S. K. Singh",
+    title: "Vice Chancellor",
+    institution: "Rajasthan Technical University, Kota",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1713452018/ConferenceAssets/gvxgxu0hevraexehrjx3.jpg",
+    type: "National"
   },
   {
-    name: "Marcus Rodriguez",
-    title: "Founder of StartupX",
-    bio: "Serial entrepreneur and venture capitalist shaping the future of tech",
-    image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
-    social: { twitter: "#", linkedin: "#", website: "#" },
-    expertise: ["Entrepreneurship", "VC"]
+    name: "Dr. Akhilesh Tiwari",
+    title: "Secretary IEEE and Associate Professor",
+    institution: "IIIT Allahabad",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1710526987/ConferenceAssets/xh1ay7h3tovn6vttzcwn.jpg",
+    type: "National"
   },
   {
-    name: "Dr. Emily Watson",
-    title: "AI Research Director",
-    bio: "Machine learning pioneer focused on ethical AI and responsible innovation",
-    image: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
-    social: { twitter: "#", linkedin: "#", website: "#" },
-    expertise: ["Ethical AI", "Research"]
+    name: "Dr. Virender Ranga",
+    title: "Associate Professor, Department of Information Technology",
+    institution: "Delhi Technological University",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1713452019/ConferenceAssets/mpb5dwnyzjdrcghbkef0.jpg",
+    type: "National"
   },
   {
-    name: "David Kim",
-    title: "VP of Engineering",
-    bio: "Expert in scaling engineering teams and building resilient systems",
-    image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
-    social: { twitter: "#", linkedin: "#", website: "#" },
-    expertise: ["Engineering", "Leadership"]
+    name: "Prof. (Dr.) P. Nagabhushan",
+    title: "Vice-Chancellor",
+    institution: "Vignan's Foundation for Science, Technology & Research, Andhra Pradesh",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1710526986/ConferenceAssets/irbpoz8ub3209wf4wjp5.jpg",
+    type: "National"
+  },
+  {
+    name: "Prof. (Dr.) Satish K. Singh",
+    title: "Section Chair, IEEE UP Section",
+    institution: "IIIT Allahabad",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1710528682/ConferenceAssets/n6q7ktwnnub0ommxgomd.jpg",
+    type: "National"
+  },
+  {
+    name: "Prof. (Dr.) Shaymaa R. Tahhan",
+    title: "Laser and Optoelectronics Department",
+    institution: "College of Engineering, Al-Nahrain University, Baghdad, Iraq",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1710528683/ConferenceAssets/yd7bayfsfws9uit52zmx.jpg",
+    type: "International"
+  },
+  {
+    name: "Prof. (Dr.) Anand Nayyar",
+    title: "School of Computer Science",
+    institution: "Faculty of Information Technology, Duy Tan University, Da Nang, Viet Nam",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1710528682/ConferenceAssets/l2cl874gzorwdjklangb.jpg",
+    type: "International"
+  },
+  {
+    name: "Dr. Sandeep Kajal",
+    title: "Postdocotral Researcher",
+    institution: "Department of Mechanical and Material Engineering, University of Western Ontario, Canada",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1710526986/ConferenceAssets/gnadmkcrpkfc0fvonpej.jpg",
+    type: "International"
+  },
+  {
+    name: "Dr. Ajay Beniwal",
+    title: "Marie Curie Fellow",
+    institution: "University of Glasgow, United Kingdom",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1710526986/ConferenceAssets/hvaxgucrjogkzmmelhbq.jpg",
+    type: "International"
+  },
+  {
+    name: "Prof. Dr. Neyara Radwan",
+    title: "Associate Professor Industrial Engineering Dept.",
+    institution: "AL MAAREFA UNIVERSITY, Saudi Arabia & Suez Canal University, Egypt",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1713452018/ConferenceAssets/evctl9ybkyy4xdha0sqk.jpg",
+    type: "International"
+  },
+  {
+    name: "Dr. Ahmed A. Elngar",
+    title: "Associate Professor",
+    institution: "Faculty of CS and AI, Beni-Suef University, Egypt",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1710526984/ConferenceAssets/rvtqaqd2gl7wupnw8j0a.jpg",
+    type: "International"
+  },
+  {
+    name: "Dr. Kashif Nisar",
+    title: "Professor",
+    institution: "Swinburne University of Technology, Sydney, Australia",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1710526984/ConferenceAssets/mlctgifpndbsn1p2e9sg.jpg",
+    type: "International"
+  },
+  {
+    name: "Dr. Ana Clarke",
+    title: "Founder and CEO",
+    institution: "AC SmartData",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1713452018/ConferenceAssets/ci1vwoyuhrum4ashujvn.jpg",
+    type: "International"
+  },
+  {
+    name: "Prof. Nada Ratković",
+    title: "Assistant Professor",
+    institution: "Department of Quantitative Methods, University Split",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1710526983/ConferenceAssets/dggqlawqezcvneess62a.jpg",
+    type: "International"
+  },
+  {
+    name: "Prof. (Dr.) Deepak Garg",
+    title: "Vice Chancellor",
+    institution: "SR University | Founder leadingindia.ai",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1710526986/ConferenceAssets/sbbsc4xwoc1l9qogy9tr.jpg",
+    type: "National"
+  },
+  {
+    name: "Prof. (Dr.) Asheesh K. Singh",
+    title: "Professor EE Department",
+    institution: "MNNIT, Allahabad / Immediate Past Section Chair, IEEE UP Section",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1710526985/ConferenceAssets/wzcnjyljg4jigusvcmhx.jpg",
+    type: "National"
+  },
+  {
+    name: "Prof. (Dr.) Prabhakar Tiwari",
+    title: "Professor",
+    institution: "MMMUT, Gorakhpur/ Secretary, IEEE U.P. Section",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1710526985/ConferenceAssets/ww12ga3i21esptn3ij7s.jpg",
+    type: "National"
+  },
+  {
+    name: "Prof. (Dr.) Malay Kishore Dutta",
+    title: "Director, Centre for Artificial Intelligence & Dean Student Research",
+    institution: "Amity University, Noida, India",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1710526985/ConferenceAssets/u1sr91reu5ae1eqnjtmy.jpg",
+    type: "National"
+  },
+  {
+    name: "Prof. (Dr.) Neetesh Purohit",
+    title: "Director",
+    institution: "SGSITS, Indore",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1710526984/ConferenceAssets/lcs6eejonbemwbeafix8.jpg",
+    type: "National"
+  },
+  {
+    name: "Prof. (Dr.) N. Badal",
+    title: "Director",
+    institution: "REC, Bijnor (U.P.), India",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1710526984/ConferenceAssets/zog1nzfyisblpai12ibq.jpg",
+    type: "National"
+  },
+  {
+    name: "Prof. (Dr.) J Ramkumar",
+    title: "Professor",
+    institution: "IIT Kanpur India, Ex Chair of IEEE UP",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1710526984/ConferenceAssets/bysze53ht5kdi2hwicbo.jpg",
+    type: "National"
+  },
+  {
+    name: "Prof. (Dr.) Rajiv Saxena",
+    title: "Vice Chancellor",
+    institution: "Jaypee University, Anoopshahr",
+    image: "https://res.cloudinary.com/dooi3sikb/image/upload/v1710526983/ConferenceAssets/agwdve3ak2bmgdfujfj0.jpg",
+    type: "National"
   }
 ];
 
-export default function Speakers() {
+const Speakers = () => {
   return (
-    <section id="speakers" className="py-20 bg-bg-secondary/30">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
-            Featured Speakers
-          </h2>
-          <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Learn from visionary leaders who are defining the future of technology
-          </p>
+    <div className="select-none py-16 relative overflow-hidden" id="speakers">
+      {/* Red gradient borders */}
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-[#991b1b] to-transparent"></div>
+      <div className="absolute right-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-[#991b1b] to-transparent"></div>
+      
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16 relative">
+          <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1/4 h-1 bg-gradient-to-r from-[#991b1b] to-transparent"></div>
+          <h2 className="text-4xl font-bold text-surface-primary mb-4 animate-[fadeIn_1s_ease-in]">Hon'ble Speakers</h2>
+          <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/4 h-1 bg-gradient-to-l from-[#991b1b] to-transparent"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {speakers.map((speaker, index) => (
-            <div key={index} className="group">
-              <div className="bg-bg-primary rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-border-light hover:border-primary-300 hover:-translate-y-2">
-                {/* Image */}
-                <div className="aspect-square overflow-hidden relative">
-                  <img 
-                    src={speaker.image} 
-                    alt={speaker.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                
-                {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-text-primary mb-1">{speaker.name}</h3>
-                  <p className="text-primary-500 font-semibold mb-3">{speaker.title}</p>
-                  <p className="text-text-secondary text-sm mb-4 leading-relaxed">{speaker.bio}</p>
-                  
-                  {/* Expertise Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {speaker.expertise.map((skill, skillIndex) => (
-                      <span key={skillIndex} className="px-3 py-1 bg-bg-secondary rounded-full text-xs font-medium text-text-secondary border border-border-light">
-                        {skill}
-                      </span>
-                    ))}
+        <div className="w-full bg-surface rounded-lg shadow-2xl">
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={10}
+            autoplay={{
+              delay: 1500,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            navigation={true}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+              },
+            }}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="p-8"
+          >
+            {speakers.map((speaker, index) => (
+              <SwiperSlide key={index} className="group">
+                <div className="p-4 transform transition-transform duration-300 hover:scale-105">
+                  <div className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-[#991b1b]">
+                    <div className="relative">
+                      <img
+                        src={speaker.image}
+                        alt={`${speaker.name}'s Photo`}
+                        className="w-full h-64 object-cover transform transition-transform duration-300 group-hover:scale-110"
+                      />
+                      <div className={`absolute top-4 right-4 ${
+                        speaker.type === "National" 
+                          ? "bg-amber-600/90" 
+                          : "bg-blue-800/90"
+                        } text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm animate-[fadeIn_0.5s_ease-in]`}>
+                        {speaker.type} Speaker
+                      </div>
+                    </div>
+                    <div className="p-4 backdrop-blur-sm">
+                      <h3 className="font-bold text-lg text-surface-primary mb-1 line-clamp-1">
+                        {speaker.name}
+                      </h3>
+                      <p className="text-surface-secondary text-sm mb-1 line-clamp-2">
+                        {speaker.title}
+                      </p>
+                      <p className="text-surface-tertiary text-xs line-clamp-2">
+                        {speaker.institution}
+                      </p>
+                    </div>
                   </div>
-                  
-                  {/* Social Links */}
-                  <div className="flex space-x-3">
-                    {[
-                      { icon: Twitter, href: speaker.social.twitter, color: 'hover:text-blue-400' },
-                      { icon: Linkedin, href: speaker.social.linkedin, color: 'hover:text-blue-600' },
-                      { icon: Globe, href: speaker.social.website, color: 'hover:text-green-500' }
-                    ].map((social, socialIndex) => (
-                      <a key={socialIndex} href={social.href} className={`p-2 bg-bg-secondary rounded-full hover:bg-bg-tertiary transition-all duration-200 text-text-muted ${social.color} group/social`}>
-                        <social.icon className="w-4 h-4" />
-                      </a>
-                    ))}
-                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          <div className="text-center py-8">
+            <button 
+              onClick={() => window.open('/all-speakers', '_blank')}
+              className="inline-flex items-center px-6 py-3 border-2 border-[#991b1b] text-base font-medium rounded-md text-white bg-[#991b1b] hover:bg-transparent hover:text-[#991b1b] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 group"
+            >
+              View All Speakers
+              <svg 
+                className="ml-2 -mr-1 w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" 
+                fill="currentColor" 
+                viewBox="0 0 20 20"
+              >
+                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
-}
+};
+
+export default Speakers;

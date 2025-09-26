@@ -1,94 +1,114 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, Calendar, MapPin } from 'lucide-react';
-import ThemeToggle from './ThemeToggle';
+import { Menu, X, Sun, Moon } from 'lucide-react';
+import conferenceImage from "../assets/International_Conference_on_Advances_in_(1)[1].png";
 
-export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+interface HeaderProps {
+  isMenuOpen: boolean;
+  setIsMenuOpen: (isOpen: boolean) => void;
+  isScrolled: boolean;
+  scrollToSection: (sectionId: string) => void;
+  isDarkMode: boolean;
+  toggleTheme: () => void;
+}
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+export default function Header({
+  isMenuOpen,
+  setIsMenuOpen,
+  isScrolled,
+  scrollToSection,
+  isDarkMode,
+  toggleTheme
+}: HeaderProps) {
+  const menuItems = [
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'guidelines', label: 'Guidelines' },
+    { id: 'speakers', label: 'Speakers' },
+    { id: 'call-for-papers', label: 'Call for Papers' },
+    { id: 'schedule', label: 'Schedule' },
+    { id: 'committee', label: 'Committee' },
+    { id: 'sponsors', label: 'Sponsors' },
+    { id: 'register', label: 'Register' },
+    { id: 'contact', label: 'Contact' },
+    { id: 'cmt-acknowledgement', label: 'CMT' },
+  ];
 
   return (
-    <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-bg-primary/80 backdrop-blur-md shadow-lg border-b border-border-light' 
-        : 'bg-transparent'
+    <header className={`fixed w-full z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-surface/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
     }`}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center shadow-lg">
-              <Calendar className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold gradient-text">
-                TechSummit 2024
-              </h1>
-              <p className="text-xs text-text-muted flex items-center">
-                <MapPin className="w-3 h-3 mr-1" />
-                San Francisco
-              </p>
-            </div>
+      <nav className="container mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+            <img src={conferenceImage} alt="Conference Logo" style={{ width: 56, height: 56, borderRadius: '50%', boxShadow: '0 2px 8px rgba(0,0,0,0.10)' }} className="mr-3" />
+            <span className="text-2xl font-bold text-surface-primary">IC3AI</span>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {['Home', 'Speakers', 'Schedule', 'Sponsors', 'Contact'].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-text-secondary hover:text-text-primary font-medium transition-colors duration-200 relative group"
+          <div className="hidden md:flex items-center flex-wrap gap-x-6 gap-y-2 justify-end flex-grow ml-8">
+            {menuItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="text-surface-secondary hover:text-primary transition-colors text-sm whitespace-nowrap"
               >
-                {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 group-hover:w-full transition-all duration-300"></span>
-              </a>
+                {item.label}
+              </button>
             ))}
-            <ThemeToggle />
-            <button className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-6 py-2.5 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200 font-medium">
-              Register
-            </button>
-          </nav>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-3">
-            <ThemeToggle />
             <button
-              className="p-2 rounded-lg hover:bg-bg-secondary transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={toggleTheme}
+              className="p-2 rounded-full hover:bg-surface-secondary/10 transition-colors"
+              aria-label="Toggle theme"
             >
-              {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
           </div>
+
+          {/* Mobile Navigation Toggle */}
+          <button
+            className="md:hidden p-2 rounded-lg hover:bg-surface-secondary/10 transition-colors"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle navigation"
+          >
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border-light bg-bg-primary/95 backdrop-blur-md">
-            <nav className="flex flex-col space-y-4">
-              {['Home', 'Speakers', 'Schedule', 'Sponsors', 'Contact'].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="text-text-secondary hover:text-text-primary font-medium transition-colors py-2"
-                  onClick={() => setIsMenuOpen(false)}
+          <div className="md:hidden absolute top-full left-0 w-full bg-surface shadow-lg max-h-[80vh] overflow-y-auto">
+            <div className="container mx-auto px-6 py-4">
+              {menuItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    scrollToSection(item.id);
+                    setIsMenuOpen(false);
+                  }}
+                  className="block w-full text-left py-3 text-surface-secondary hover:text-primary transition-colors border-b border-surface-secondary/10 last:border-b-0"
                 >
-                  {item}
-                </a>
+                  {item.label}
+                </button>
               ))}
-              <button className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-6 py-2.5 rounded-full font-medium w-fit mt-4">
-                Register
+              <button
+                onClick={toggleTheme}
+                className="flex items-center w-full py-2 text-surface-secondary hover:text-primary transition-colors"
+              >
+                {isDarkMode ? (
+                  <>
+                    <Sun className="w-5 h-5 mr-2" />
+                    Light Mode
+                  </>
+                ) : (
+                  <>
+                    <Moon className="w-5 h-5 mr-2" />
+                    Dark Mode
+                  </>
+                )}
               </button>
-            </nav>
+            </div>
           </div>
         )}
-      </div>
+      </nav>
     </header>
   );
 }

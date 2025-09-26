@@ -1,91 +1,204 @@
-import { Star, Award, Medal } from 'lucide-react';
+import React from 'react';
+import { ExternalLink } from 'lucide-react';
 
-const sponsors = {
-  platinum: [
-    { name: "TechCorp", logo: "https://images.pexels.com/photos/6954240/pexels-photo-6954240.jpeg?auto=compress&cs=tinysrgb&w=200&h=100&fit=crop" },
-    { name: "InnovateLab", logo: "https://images.pexels.com/photos/6954241/pexels-photo-6954241.jpeg?auto=compress&cs=tinysrgb&w=200&h=100&fit=crop" }
-  ],
-  gold: [
-    { name: "StartupX", logo: "https://images.pexels.com/photos/6954242/pexels-photo-6954242.jpeg?auto=compress&cs=tinysrgb&w=150&h=80&fit=crop" },
-    { name: "CloudTech", logo: "https://images.pexels.com/photos/6954243/pexels-photo-6954243.jpeg?auto=compress&cs=tinysrgb&w=150&h=80&fit=crop" },
-    { name: "DataFlow", logo: "https://images.pexels.com/photos/6954244/pexels-photo-6954244.jpeg?auto=compress&cs=tinysrgb&w=150&h=80&fit=crop" }
-  ],
-  silver: [
-    { name: "DevTools", logo: "https://images.pexels.com/photos/6954245/pexels-photo-6954245.jpeg?auto=compress&cs=tinysrgb&w=120&h=60&fit=crop" },
-    { name: "CodeBase", logo: "https://images.pexels.com/photos/6954246/pexels-photo-6954246.jpeg?auto=compress&cs=tinysrgb&w=120&h=60&fit=crop" },
-    { name: "TechFlow", logo: "https://images.pexels.com/photos/6954247/pexels-photo-6954247.jpeg?auto=compress&cs=tinysrgb&w=120&h=60&fit=crop" },
-    { name: "Innovation Hub", logo: "https://images.pexels.com/photos/6954248/pexels-photo-6954248.jpeg?auto=compress&cs=tinysrgb&w=120&h=60&fit=crop" }
-  ]
-};
+interface Sponsor {
+  id: number;
+  name: string;
+  logo: string;
+  website: string;
+  tier: 'platinum' | 'gold' | 'silver' | 'bronze';
+  description: string;
+}
 
-const sponsorTiers = [
-  {
-    title: "Platinum Sponsors",
-    icon: Award,
-    sponsors: sponsors.platinum,
-    cardClass: "w-72 h-36",
-    iconColor: "text-gray-400"
-  },
-  {
-    title: "Gold Sponsors",
-    icon: Medal,
-    sponsors: sponsors.gold,
-    cardClass: "w-56 h-28",
-    iconColor: "text-yellow-500"
-  },
-  {
-    title: "Silver Sponsors",
-    icon: Star,
-    sponsors: sponsors.silver,
-    cardClass: "w-44 h-24",
-    iconColor: "text-gray-500"
-  }
-];
+const Sponsors: React.FC = () => {
+  const sponsors: Sponsor[] = [
+    {
+      id: 1,
+      name: "TechCorp Industries",
+      logo: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=200&h=100&fit=crop",
+      website: "#",
+      tier: "platinum",
+      description: "Leading technology solutions provider"
+    },
+    {
+      id: 2,
+      name: "Innovation Labs",
+      logo: "https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=200&h=100&fit=crop",
+      website: "#",
+      tier: "platinum",
+      description: "Research and development excellence"
+    },
+    {
+      id: 3,
+      name: "Future Systems",
+      logo: "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=200&h=100&fit=crop",
+      website: "#",
+      tier: "gold",
+      description: "Next-generation computing solutions"
+    },
+    {
+      id: 4,
+      name: "DataFlow Inc",
+      logo: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=200&h=100&fit=crop",
+      website: "#",
+      tier: "gold",
+      description: "Big data and analytics platform"
+    },
+    {
+      id: 5,
+      name: "CloudTech Solutions",
+      logo: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=200&h=100&fit=crop",
+      website: "#",
+      tier: "silver",
+      description: "Cloud infrastructure services"
+    },
+    {
+      id: 6,
+      name: "AI Dynamics",
+      logo: "https://images.pexels.com/photos/3184317/pexels-photo-3184317.jpeg?auto=compress&cs=tinysrgb&w=200&h=100&fit=crop",
+      website: "#",
+      tier: "silver",
+      description: "Artificial intelligence solutions"
+    }
+  ];
 
-export default function Sponsors() {
+  const getTierConfig = (tier: string) => {
+    switch (tier) {
+      case 'platinum':
+        return {
+          title: 'Platinum Sponsors',
+          bgColor: 'bg-gradient-to-r from-gray-300 to-gray-400',
+          textColor: 'text-gray-800',
+          size: 'w-48 h-24'
+        };
+      case 'gold':
+        return {
+          title: 'Gold Sponsors',
+          bgColor: 'bg-gradient-to-r from-yellow-300 to-yellow-500',
+          textColor: 'text-yellow-800',
+          size: 'w-40 h-20'
+        };
+      case 'silver':
+        return {
+          title: 'Silver Sponsors',
+          bgColor: 'bg-gradient-to-r from-gray-200 to-gray-300',
+          textColor: 'text-gray-700',
+          size: 'w-32 h-16'
+        };
+      case 'bronze':
+        return {
+          title: 'Bronze Sponsors',
+          bgColor: 'bg-gradient-to-r from-orange-300 to-orange-400',
+          textColor: 'text-orange-800',
+          size: 'w-28 h-14'
+        };
+      default:
+        return {
+          title: 'Sponsors',
+          bgColor: 'bg-surface-tertiary',
+          textColor: 'text-surface-primary',
+          size: 'w-32 h-16'
+        };
+    }
+  };
+
+  const sponsorsByTier = sponsors.reduce((acc, sponsor) => {
+    if (!acc[sponsor.tier]) {
+      acc[sponsor.tier] = [];
+    }
+    acc[sponsor.tier].push(sponsor);
+    return acc;
+  }, {} as Record<string, Sponsor[]>);
+
+  const tierOrder = ['platinum', 'gold', 'silver', 'bronze'];
+
   return (
-    <section id="sponsors" className="py-20 bg-bg-secondary/30">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="sponsors" className="py-20 bg-surface">
+      <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
-            Our Partners
-          </h2>
-          <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Proudly supported by industry leaders who share our vision for innovation
+          <h2 className="text-4xl font-bold text-surface-primary mb-4">Our Sponsors</h2>
+          <p className="text-xl text-surface-secondary max-w-3xl mx-auto">
+            We're grateful to our sponsors who make this conference possible and support 
+            the advancement of research and innovation.
           </p>
         </div>
 
         <div className="space-y-16">
-          {sponsorTiers.map((tier, tierIndex) => (
-            <div key={tierIndex} className="text-center">
-              <div className="flex items-center justify-center mb-8">
-                <tier.icon className={`w-6 h-6 mr-3 ${tier.iconColor}`} />
-                <h3 className="text-2xl font-bold text-text-primary">{tier.title}</h3>
-              </div>
-              
-              <div className="flex flex-wrap justify-center items-center gap-8">
-                {tier.sponsors.map((sponsor, index) => (
-                  <div key={index} className="group">
-                    <div className={`${tier.cardClass} bg-bg-primary rounded-2xl border border-border-light hover:border-primary-300 flex items-center justify-center hover:shadow-lg transition-all duration-300 group-hover:scale-105 overflow-hidden`}>
-                      <img 
-                        src={sponsor.logo} 
-                        alt={sponsor.name}
-                        className="max-h-12 max-w-[80%] object-contain opacity-70 group-hover:opacity-100 transition-opacity filter grayscale group-hover:grayscale-0"
-                      />
+          {tierOrder.map((tier) => {
+            const tieredSponsors = sponsorsByTier[tier];
+            if (!tieredSponsors || tieredSponsors.length === 0) return null;
+
+            const tierConfig = getTierConfig(tier);
+
+            return (
+              <div key={tier} className="text-center">
+                <div className="mb-8">
+                  <span className={`inline-block px-6 py-2 rounded-full text-lg font-semibold ${tierConfig.bgColor} ${tierConfig.textColor}`}>
+                    {tierConfig.title}
+                  </span>
+                </div>
+
+                <div className={`grid gap-8 justify-items-center ${
+                  tier === 'platinum' ? 'grid-cols-1 md:grid-cols-2' :
+                  tier === 'gold' ? 'grid-cols-2 md:grid-cols-2' :
+                  'grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
+                }`}>
+                  {tieredSponsors.map((sponsor, index) => (
+                    <div
+                      key={sponsor.id}
+                      className={`sponsor-card bg-card rounded-2xl p-6 border border-surface shadow-custom hover:shadow-custom-lg transition-all duration-300 animate-scale-in group`}
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <div className={`${tierConfig.size} mx-auto mb-4 bg-white rounded-lg overflow-hidden border border-surface flex items-center justify-center`}>
+                        <img
+                          src={sponsor.logo}
+                          alt={`${sponsor.name} logo`}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      
+                      <h3 className="text-lg font-semibold text-surface-primary mb-2">
+                        {sponsor.name}
+                      </h3>
+                      
+                      <p className="text-surface-secondary text-sm mb-4">
+                        {sponsor.description}
+                      </p>
+                      
+                      <a
+                        href={sponsor.website}
+                        className="inline-flex items-center text-primary hover:text-primary-dark transition-colors text-sm font-medium"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Visit Website
+                        <ExternalLink className="w-3 h-3 ml-1" />
+                      </a>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="text-center mt-16">
-          <button className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
-            Become a Partner
-          </button>
+          <div className="bg-card rounded-2xl p-8 border border-surface shadow-custom-lg">
+            <h3 className="text-2xl font-bold text-surface-primary mb-4">
+              Become a Sponsor
+            </h3>
+            <p className="text-surface-secondary mb-6 max-w-2xl mx-auto">
+              Join our community of forward-thinking organizations supporting research and innovation. 
+              Various sponsorship packages available to meet your needs.
+            </p>
+            <button className="btn-primary px-8 py-3 rounded-lg">
+              Sponsorship Information
+            </button>
+          </div>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default Sponsors;

@@ -1,122 +1,188 @@
-import { useState } from 'react';
-import { Clock, MapPin, User, Calendar } from 'lucide-react';
+import React from 'react';
+import { Calendar, Clock, MapPin, Users } from 'lucide-react';
 
-const scheduleData = [
-  {
-    day: "Day 1",
-    date: "March 15",
-    sessions: [
-      { time: "9:00", title: "Registration & Welcome Coffee", speaker: "", location: "Main Lobby", type: "break" },
-      { time: "10:00", title: "Opening Keynote: The Future of AI", speaker: "Sarah Chen", location: "Main Stage", type: "keynote" },
-      { time: "11:30", title: "Building Scalable Systems", speaker: "David Kim", location: "Room A", type: "talk" },
-      { time: "13:00", title: "Networking Lunch", speaker: "", location: "Exhibition Hall", type: "break" },
-      { time: "14:30", title: "Startup Pitch Competition", speaker: "Marcus Rodriguez", location: "Main Stage", type: "workshop" }
-    ]
-  },
-  {
-    day: "Day 2",
-    date: "March 16",
-    sessions: [
-      { time: "9:30", title: "Ethical AI in Practice", speaker: "Dr. Emily Watson", location: "Main Stage", type: "keynote" },
-      { time: "11:00", title: "Cloud Architecture Workshop", speaker: "Sarah Chen", location: "Room B", type: "workshop" },
-      { time: "12:30", title: "Sponsor Showcase Lunch", speaker: "", location: "Exhibition Hall", type: "break" },
-      { time: "14:00", title: "Panel: Future of Work", speaker: "All Speakers", location: "Main Stage", type: "panel" },
-      { time: "16:00", title: "Networking Reception", speaker: "", location: "Rooftop Terrace", type: "break" }
-    ]
-  }
-];
+interface ScheduleEvent {
+  id: number;
+  time: string;
+  title: string;
+  speaker?: string;
+  location: string;
+  type: 'keynote' | 'session' | 'break' | 'workshop';
+  description: string;
+}
 
-const typeStyles = {
-  keynote: 'bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 border-primary-200 dark:border-primary-800',
-  workshop: 'bg-secondary-50 dark:bg-secondary-900/20 text-secondary-700 dark:text-secondary-300 border-secondary-200 dark:border-secondary-800',
-  panel: 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 border-green-200 dark:border-green-800',
-  talk: 'bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 border-orange-200 dark:border-orange-800',
-  break: 'bg-bg-secondary text-text-muted border-border'
-};
+const Schedule: React.FC = () => {
+  const scheduleData: ScheduleEvent[] = [
+    {
+      id: 1,
+      time: "9:00 AM",
+      title: "Registration & Welcome Coffee",
+      location: "Main Lobby",
+      type: "break",
+      description: "Check-in and networking with fellow attendees"
+    },
+    {
+      id: 2,
+      time: "10:00 AM",
+      title: "Opening Keynote: The Future of AI Research",
+      speaker: "Dr. Sarah Chen",
+      location: "Main Auditorium",
+      type: "keynote",
+      description: "Exploring the latest breakthroughs in artificial intelligence and their implications for the future"
+    },
+    {
+      id: 3,
+      time: "11:00 AM",
+      title: "Quantum Computing Applications",
+      speaker: "Prof. Michael Rodriguez",
+      location: "Hall A",
+      type: "session",
+      description: "Deep dive into practical applications of quantum computing in modern research"
+    },
+    {
+      id: 4,
+      time: "11:30 AM",
+      title: "Natural Language Processing Workshop",
+      speaker: "Dr. Emily Watson",
+      location: "Lab 1",
+      type: "workshop",
+      description: "Hands-on workshop on implementing NLP solutions"
+    },
+    {
+      id: 5,
+      time: "12:30 PM",
+      title: "Lunch Break & Networking",
+      location: "Conference Center",
+      type: "break",
+      description: "Enjoy lunch while networking with peers and speakers"
+    },
+    {
+      id: 6,
+      time: "2:00 PM",
+      title: "Robotics and Automation",
+      speaker: "Dr. James Park",
+      location: "Hall B",
+      type: "session",
+      description: "Latest developments in autonomous systems and robotics"
+    },
+    {
+      id: 7,
+      time: "3:00 PM",
+      title: "Panel Discussion: Ethics in AI",
+      location: "Main Auditorium",
+      type: "session",
+      description: "Roundtable discussion on ethical considerations in AI development"
+    },
+    {
+      id: 8,
+      time: "4:00 PM",
+      title: "Closing Remarks & Awards",
+      location: "Main Auditorium",
+      type: "keynote",
+      description: "Conference wrap-up and recognition of outstanding contributions"
+    }
+  ];
 
-export default function Schedule() {
-  const [activeDay, setActiveDay] = useState(0);
+  const getTypeColor = (type: string) => {
+    switch (type) {
+      case 'keynote':
+        return 'bg-primary text-white';
+      case 'session':
+        return 'bg-primary/10 text-primary';
+      case 'workshop':
+        return 'bg-accent/10 text-accent';
+      case 'break':
+        return 'bg-surface-tertiary text-surface-secondary';
+      default:
+        return 'bg-surface-tertiary text-surface-secondary';
+    }
+  };
+
+  const getTypeIcon = (type: string) => {
+    switch (type) {
+      case 'keynote':
+        return <Users className="w-4 h-4" />;
+      case 'session':
+        return <Calendar className="w-4 h-4" />;
+      case 'workshop':
+        return <Clock className="w-4 h-4" />;
+      case 'break':
+        return <MapPin className="w-4 h-4" />;
+      default:
+        return <Calendar className="w-4 h-4" />;
+    }
+  };
 
   return (
-    <section id="schedule" className="py-20 bg-bg-primary">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="schedule" className="py-20 bg-surface-secondary">
+      <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
-            Event Schedule
-          </h2>
-          <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Three days of carefully curated content and networking opportunities
+          <h2 className="text-4xl font-bold text-surface-primary mb-4">Conference Schedule</h2>
+          <p className="text-xl text-surface-secondary max-w-3xl mx-auto">
+            Join us for a full day of inspiring talks, interactive workshops, and networking opportunities.
           </p>
         </div>
 
-        {/* Day Selector */}
-        <div className="flex justify-center mb-12">
-          <div className="bg-bg-secondary rounded-2xl p-2 border border-border-light">
-            {scheduleData.map((day, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveDay(index)}
-                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                  activeDay === index
-                    ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-lg'
-                    : 'text-text-secondary hover:text-text-primary hover:bg-bg-tertiary'
-                }`}
+        <div className="max-w-4xl mx-auto">
+          <div className="space-y-6">
+            {scheduleData.map((event, index) => (
+              <div 
+                key={event.id}
+                className={`schedule-item bg-card rounded-2xl p-6 border border-surface shadow-custom hover:shadow-custom-lg transition-all duration-300 animate-fade-in-up`}
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="flex items-center space-x-2">
-                  <Calendar className="w-4 h-4" />
-                  <span>{day.day}</span>
-                </div>
-                <div className="text-xs opacity-75">{day.date}</div>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Schedule Content */}
-        <div className="bg-bg-secondary/50 backdrop-blur-sm rounded-3xl border border-border-light p-8">
-          <div className="space-y-4">
-            {scheduleData[activeDay].sessions.map((session, index) => (
-              <div key={index} className="group">
-                <div className="flex flex-col md:flex-row md:items-center p-6 bg-bg-primary rounded-2xl hover:shadow-lg transition-all duration-300 border border-border-light hover:border-primary-300">
-                  {/* Time */}
-                  <div className="md:w-24 mb-4 md:mb-0 flex-shrink-0">
-                    <div className="flex items-center text-primary-500 font-bold text-lg">
-                      <Clock className="w-4 h-4 mr-2" />
-                      {session.time}
-                    </div>
-                  </div>
-                  
-                  {/* Content */}
-                  <div className="flex-1 md:mx-8">
-                    <h4 className="text-lg font-semibold text-text-primary mb-2 group-hover:text-primary-500 transition-colors">
-                      {session.title}
-                    </h4>
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-3 text-text-secondary">
-                      {session.speaker && (
-                        <div className="flex items-center">
-                          <User className="w-4 h-4 mr-2" />
-                          <span className="font-medium">{session.speaker}</span>
-                        </div>
-                      )}
-                      <div className="flex items-center">
-                        <MapPin className="w-4 h-4 mr-2" />
-                        <span>{session.location}</span>
+                <div className="flex flex-col md:flex-row md:items-center gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center space-x-2 mb-2 md:mb-0">
+                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+                        <Clock className="w-6 h-6" />
+                      </div>
+                      <div className="text-xl font-bold text-surface-primary">
+                        {event.time}
                       </div>
                     </div>
                   </div>
                   
-                  {/* Type Badge */}
-                  <div className="mt-4 md:mt-0 flex-shrink-0">
-                    <span className={`px-4 py-2 rounded-full text-sm font-medium border ${typeStyles[session.type as keyof typeof typeStyles]}`}>
-                      {session.type.charAt(0).toUpperCase() + session.type.slice(1)}
-                    </span>
+                  <div className="flex-grow">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+                      <h3 className="text-xl font-semibold text-surface-primary">
+                        {event.title}
+                      </h3>
+                      <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${getTypeColor(event.type)}`}>
+                        {getTypeIcon(event.type)}
+                        <span className="ml-1 capitalize">{event.type}</span>
+                      </span>
+                    </div>
+                    
+                    {event.speaker && (
+                      <p className="text-primary font-medium mb-2">
+                        Speaker: {event.speaker}
+                      </p>
+                    )}
+                    
+                    <p className="text-surface-secondary mb-3">
+                      {event.description}
+                    </p>
+                    
+                    <div className="flex items-center text-surface-tertiary text-sm">
+                      <MapPin className="w-4 h-4 mr-1" />
+                      <span>{event.location}</span>
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+          
+          <div className="text-center mt-12">
+            <button className="btn-primary px-8 py-3 rounded-lg">
+              Download Full Schedule
+            </button>
+          </div>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default Schedule;

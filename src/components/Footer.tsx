@@ -1,118 +1,136 @@
-import { Calendar, Mail, Phone, MapPin, Twitter, Linkedin, Instagram, Youtube, ArrowRight } from 'lucide-react';
+import React from 'react';
+import { BookOpen, Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
 
-export default function Footer() {
+interface FooterProps {
+  scrollToSection: (sectionId: string) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ scrollToSection }) => {
   return (
-    <footer id="contact" className="bg-bg-secondary border-t border-border-light py-20">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Conference Info */}
+    <footer className="bg-surface-tertiary text-surface-primary py-16 border-t border-surface">
+      <div className="container mx-auto px-6">
+        <div className="grid md:grid-cols-4 gap-8 mb-12">
+          {/* Brand Section */}
           <div>
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center shadow-lg">
-                <Calendar className="w-6 h-6 text-white" />
+            <div className="flex items-center space-x-2 mb-4">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <BookOpen className="w-5 h-5 text-white" />
               </div>
-              <div>
-                <h3 className="text-2xl font-bold gradient-text">TechSummit 2024</h3>
-                <p className="text-text-muted text-sm">San Francisco, CA</p>
-              </div>
+              <span className="text-xl font-bold">ICAC</span>
             </div>
-            <p className="text-text-secondary mb-6 leading-relaxed">
-              Join us for three days of innovation, networking, and insights that will shape the future of technology.
+            <p className="text-surface-secondary mb-4">
+              Excellence in academic research and education, shaping the future through innovation and collaborative learning.
             </p>
-            <div className="flex space-x-3">
-              {[
-                { icon: Twitter, color: 'hover:bg-blue-500' },
-                { icon: Linkedin, color: 'hover:bg-blue-600' },
-                { icon: Instagram, color: 'hover:bg-pink-500' },
-                { icon: Youtube, color: 'hover:bg-red-500' }
-              ].map((social, index) => (
-                <a key={index} href="#" className={`p-3 bg-bg-tertiary rounded-xl hover:text-white transition-all duration-300 text-text-muted ${social.color} hover:scale-110`}>
-                  <social.icon className="w-5 h-5" />
-                </a>
-              ))}
+            <div className="flex space-x-4">
+              <a href="#" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300">
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a href="#" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300">
+                <Twitter className="w-4 h-4" />
+              </a>
+              <a href="#" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300">
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a href="#" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300">
+                <Instagram className="w-4 h-4" />
+              </a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-text-primary">Quick Links</h4>
-            <ul className="space-y-3">
-              {['Home', 'Speakers', 'Schedule', 'Sponsors', 'Tickets', 'Venue'].map((link) => (
-                <li key={link}>
-                  <a href={`#${link.toLowerCase()}`} className="text-text-secondary hover:text-primary-500 transition-colors duration-200 flex items-center group">
-                    <ArrowRight className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    {link}
-                  </a>
-                </li>
-              ))}
+            <h4 className="font-semibold mb-4">Quick Links</h4>
+            <ul className="space-y-2 text-surface-secondary">
+              <li><button onClick={() => scrollToSection('home')} className="hover:text-primary transition-colors">Home</button></li>
+              <li><button onClick={() => scrollToSection('about')} className="hover:text-primary transition-colors">About Us</button></li>
+              <li><button onClick={() => scrollToSection('programs')} className="hover:text-primary transition-colors">Programs</button></li>
+              <li><button onClick={() => scrollToSection('speakers')} className="hover:text-primary transition-colors">Speakers</button></li>
+              <li><button onClick={() => scrollToSection('schedule')} className="hover:text-primary transition-colors">Schedule</button></li>
+              <li><button onClick={() => scrollToSection('sponsors')} className="hover:text-primary transition-colors">Sponsors</button></li>
+              <li><button onClick={() => scrollToSection('contact')} className="hover:text-primary transition-colors">Contact</button></li>
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Academic Resources */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-text-primary">Contact Info</h4>
-            <div className="space-y-4">
+            <h4 className="font-semibold mb-4">Academic</h4>
+            <ul className="space-y-2 text-surface-secondary">
+              <li><a href="#" className="hover:text-primary transition-colors">Admissions</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Research</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Faculty</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Library</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Publications</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Conferences</a></li>
+            </ul>
+          </div>
+
+          {/* Contact Information */}
+          <div>
+            <h4 className="font-semibold mb-4">Contact Info</h4>
+            <div className="space-y-3 text-surface-secondary">
               <div className="flex items-start space-x-3">
-                <Mail className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
-                <div className="text-text-secondary">
-                  <p>info@techsummit2024.com</p>
-                  <p>sponsors@techsummit2024.com</p>
+                <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div>
+                  <p>123 Academic Avenue</p>
+                  <p>Research City, RC 12345</p>
+                  <p>India</p>
                 </div>
               </div>
-              <div className="flex items-start space-x-3">
-                <Phone className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
-                <div className="text-text-secondary">
-                  <p>+1 (555) 123-4567</p>
-                  <p>+1 (555) 123-4568</p>
+              
+              <div className="flex items-center space-x-3">
+                <Phone className="w-5 h-5 text-primary flex-shrink-0" />
+                <div>
+                  <p>+91 98765 43210</p>
+                  <p>+91 98765 43211</p>
                 </div>
               </div>
-              <div className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
-                <div className="text-text-secondary">
-                  <p>Moscone Center</p>
-                  <p>747 Howard St</p>
-                  <p>San Francisco, CA 94103</p>
+              
+              <div className="flex items-center space-x-3">
+                <Mail className="w-5 h-5 text-primary flex-shrink-0" />
+                <div>
+                  <p>info@icac.edu.in</p>
+                  <p>admissions@icac.edu.in</p>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Newsletter */}
-          <div>
-            <h4 className="text-lg font-semibold mb-6 text-text-primary">Stay Updated</h4>
-            <p className="text-text-secondary mb-4">
-              Get the latest updates about speakers, schedule, and exclusive offers.
-            </p>
-            <div className="space-y-3">
+        {/* Newsletter Subscription */}
+        <div className="bg-card rounded-2xl p-6 mb-8 border border-surface">
+          <div className="text-center md:text-left md:flex md:items-center md:justify-between">
+            <div className="mb-4 md:mb-0">
+              <h4 className="text-lg font-semibold text-surface-primary mb-2">Stay Updated</h4>
+              <p className="text-surface-secondary">Subscribe to our newsletter for the latest research updates and conference announcements.</p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 md:ml-8">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full px-4 py-3 bg-bg-tertiary border border-border rounded-xl focus:border-primary-500 focus:outline-none text-text-primary placeholder-text-muted transition-colors"
+                className="px-4 py-2 border border-surface rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 bg-surface text-surface-primary flex-grow"
               />
-              <button className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white py-3 rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300 font-semibold flex items-center justify-center">
+              <button className="btn-primary px-6 py-2 rounded-lg whitespace-nowrap">
                 Subscribe
-                <ArrowRight className="w-4 h-4 ml-2" />
               </button>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-border pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-text-muted text-sm">
-              © 2024 TechSummit. All rights reserved.
-            </p>
-            <div className="flex space-x-6 text-sm">
-              {['Privacy Policy', 'Terms of Service', 'Code of Conduct'].map((link) => (
-                <a key={link} href="#" className="text-text-muted hover:text-text-primary transition-colors">
-                  {link}
-                </a>
-              ))}
-            </div>
+        {/* Bottom Section */}
+        <div className="border-t border-surface pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-surface-secondary text-sm mb-4 md:mb-0">
+            © 2024 ICAC. All rights reserved.
+          </p>
+          <div className="flex flex-wrap justify-center md:justify-end space-x-6 text-sm">
+            <a href="#" className="text-surface-secondary hover:text-primary transition-colors">Privacy Policy</a>
+            <a href="#" className="text-surface-secondary hover:text-primary transition-colors">Terms of Service</a>
+            <a href="#" className="text-surface-secondary hover:text-primary transition-colors">Cookie Policy</a>
+            <a href="#" className="text-surface-secondary hover:text-primary transition-colors">Accessibility</a>
           </div>
         </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

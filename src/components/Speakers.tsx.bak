@@ -1,0 +1,143 @@
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+// import required modules
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+
+interface Speaker {
+  id: number;
+  name: string;
+  title: string;
+  institution: string;
+  bio: string;
+  image: string;
+  linkedin: string;
+  twitter: string;
+}
+
+const Speakers: React.FC = () => {
+  const speakers: Speaker[] = [
+    {
+      id: 1,
+      name: "Dr. Sarah Chen",
+      title: "Professor of Computer Science",
+      institution: "MIT",
+      bio: "Leading researcher in artificial intelligence and machine learning with over 15 years of experience in developing cutting-edge AI systems.",
+      image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+      linkedin: "#",
+      twitter: "#"
+    },
+    {
+      id: 2,
+      name: "Prof. Michael Rodriguez",
+      title: "Director of Innovation Lab",
+      institution: "Stanford University",
+      bio: "Expert in quantum computing and cryptography, pioneering research in quantum algorithms and their practical applications.",
+      image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+      linkedin: "#",
+      twitter: "#"
+    },
+    {
+      id: 3,
+      name: "Dr. Emily Watson",
+      title: "Research Scientist",
+      institution: "Google DeepMind",
+      bio: "Specializes in natural language processing and conversational AI, contributing to breakthrough developments in language models.",
+      image: "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+      linkedin: "#",
+      twitter: "#"
+    },
+    {
+      id: 4,
+      name: "Dr. James Park",
+      title: "Head of Robotics Division",
+      institution: "Carnegie Mellon",
+      bio: "Leading expert in autonomous systems and robotics, developing next-generation robots for healthcare and industrial applications.",
+      image: "https://images.pexels.com/photos/2182973/pexels-photo-2182973.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+      linkedin: "#",
+      twitter: "#"
+    },
+    {
+      id: 4,
+      name: "Dr. James Park",
+      title: "Head of Robotics Division",
+      institution: "Carnegie Mellon",
+      bio: "Leading expert in autonomous systems and robotics, developing next-generation robots for healthcare and industrial applications.",
+      image: "https://images.pexels.com/photos/2182973/pexels-photo-2182973.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+      linkedin: "#",
+      twitter: "#"
+    }
+    
+  ];
+
+  return (
+    <section id="speakers" className="py-20 bg-surface">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-surface-primary mb-4">Featured Speakers</h2>
+          <p className="text-xl text-surface-secondary max-w-3xl mx-auto">
+            Learn from world-renowned experts and thought leaders who are shaping the future 
+            of technology and research.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {speakers.map((speaker, index) => (
+            <div 
+              key={speaker.id} 
+              className={`speaker-card rounded-2xl p-6 text-center animate-scale-in`}
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="relative mb-6">
+                <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-primary/20">
+                  <img 
+                    src={speaker.image} 
+                    alt={speaker.name}
+                    className="speaker-image w-full h-full object-cover"
+                  />
+                </div>
+                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                  <BookOpen className="w-4 h-4 text-white" />
+                </div>
+              </div>
+              
+              <h3 className="text-xl font-bold text-surface-primary mb-2">{speaker.name}</h3>
+              <p className="text-primary font-semibold mb-1">{speaker.title}</p>
+              <p className="text-surface-tertiary text-sm mb-4">{speaker.institution}</p>
+              <p className="text-surface-secondary text-sm mb-6 leading-relaxed">{speaker.bio}</p>
+              
+              <div className="flex justify-center space-x-4">
+                <a 
+                  href={speaker.linkedin} 
+                  className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300"
+                  aria-label={`${speaker.name} LinkedIn`}
+                >
+                  <Linkedin className="w-4 h-4" />
+                </a>
+                <a 
+                  href={speaker.twitter} 
+                  className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300"
+                  aria-label={`${speaker.name} Twitter`}
+                >
+                  <Twitter className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div className="text-center mt-12">
+          <button className="btn-primary px-8 py-3 rounded-lg">
+            View All Speakers
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Speakers;
