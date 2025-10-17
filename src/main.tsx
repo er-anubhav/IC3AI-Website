@@ -1,10 +1,13 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
+import { CommitteeProvider } from './components/committees/CommitteeContext';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <CommitteeProvider>
+      <App />
+    </CommitteeProvider>
   </StrictMode>
 );

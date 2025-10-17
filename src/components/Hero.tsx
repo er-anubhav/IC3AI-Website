@@ -1,62 +1,51 @@
-import { ChevronRight } from 'lucide-react';
-
 interface HeroProps {
   scrollToSection: (sectionId: string) => void;
 }
 
-export default function Hero({ scrollToSection }: HeroProps) {
+export default function Hero({ }: HeroProps) {
   return (
-    <section id="home" className="pt-16 min-h-screen flex items-center bg-gradient-to-br from-bg-secondary to-bg-primary">
-      <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="animate-fade-in-up">
-            <h1 className="text-2xl md:text-4xl font-bold text-surface-primary leading-tight mb-6">
-              INTERNATIONAL CONFERENCE ON ADVANCE
-              <span className="text-primary block">COMPUTING COMMUNICATION AND ARTIFICIAL INTELLIGENCE</span>
-            </h1>
-            <p className="text-xl text-surface-secondary mb-8 leading-relaxed">
-              The International Conference on Advance Computing, Communication and Artificial Intelligence (IC3AI) is a premier global event that brings together researchers, academicians, scientists, and industry professionals to showcase innovations and share cutting-edge research. Covering diverse areas such as high-performance computing, next-generation communication systems, artificial intelligence, IoT, cloud technologies, and cybersecurity, the conference provides a vibrant platform for knowledge exchange. With inspiring keynote talks, engaging technical sessions, and hands-on workshops, IC3AI fosters collaboration and drives forward the future of digital transformation.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button 
-                onClick={() => scrollToSection('programs')}
-                className="btn-primary px-8 py-4 rounded-lg flex items-center justify-center"
-              >
-                Explore Programs
-                <ChevronRight className="w-5 h-5 ml-2" />
-              </button>
-              <button 
-                onClick={() => scrollToSection('about')}
-                className="btn-secondary px-8 py-4 rounded-lg"
-              >
-                Learn More
-              </button>
-            </div>
-          </div>
-          <div className="hidden md:block animate-fade-in-right">
-            <div className="relative">
-              <div className="absolute inset-0 gradient-bg rounded-3xl transform rotate-6"></div>
-              <div className="relative bg-card rounded-3xl p-8 shadow-custom-lg border border-surface">
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-primary">500+</div>
-                    <div className="text-surface-secondary">Research Papers</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-primary">50+</div>
-                    <div className="text-surface-secondary">Faculty Members</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-primary">2000+</div>
-                    <div className="text-surface-secondary">Students</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-primary">25+</div>
-                    <div className="text-surface-secondary">Years Experience</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <section
+      id="home"
+      className="pt-24 h-[300.6px] flex items-center relative overflow-hidden"
+      style={{
+        backgroundImage: 'url("/ITS Engg.png")',
+        backgroundSize: '1600.6px 299.6px',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Gradient overlay for better text readability and visual appeal */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
+      
+      {/* Decorative elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-32 h-32 bg-primary/20 rounded-full -translate-x-16 -translate-y-16 blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-32 h-32 bg-secondary/20 rounded-full translate-x-16 translate-y-16 blur-3xl" />
+      </div>
+
+      <div className="absolute inset-0 flex flex-col justify-center items-center px-6 z-10" style={{ paddingTop: '2rem' }}>
+        <div className="text-center text-white max-w-5xl mx-auto">
+          {/* Main title with enhanced styling */}
+          <h1 
+            className="text-3xl md:text-4xl font-bold mb-4 leading-tight"
+            style={{ 
+              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)',
+              background: 'linear-gradient(to right, #ffffff, #e2e8f0)',
+              WebkitBackgroundClip: 'text'
+            }}
+          >
+            International Conference On Advances In Computing , Communication And Artificial Intelligence (IC3AI-2026)
+          </h1>
+
+          {/* Enhanced button */}
+          <div className="flex justify-center gap-4">
+            {/* <button
+              onClick={() => scrollToSection('registration')}
+              className="group relative px-8 py-3 overflow-hidden rounded-lg bg-primary hover:bg-primary/90 transition-colors"
+            >
+              <span className="relative font-semibold text-white tracking-wider">
+                Register Now
+              </span>
+            </button> */}
           </div>
         </div>
       </div>

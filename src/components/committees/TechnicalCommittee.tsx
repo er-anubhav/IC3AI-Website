@@ -1,10 +1,11 @@
+import CommitteeLayout from "./CommitteeLayout";
 
 interface CommitteeMember {
   name: string;
   affiliation: string;
 }
 
-export default function TechnicalCommittee() {
+export function TechnicalCommitteeContent() {
   const committeeMembers: CommitteeMember[] = [
     { name: 'Prof. Parmanand', affiliation: 'SU, Gr.Noida' },
     { name: 'Prof. Rajiv Saxena', affiliation: 'Jaypee University' },
@@ -33,27 +34,24 @@ export default function TechnicalCommittee() {
   ];
 
   return (
-    <section id="committee" className="py-20 bg-surface">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-surface-primary mb-4">Technical Program Committee</h2>
-          <p className="text-xl text-surface-secondary max-w-3xl mx-auto">
-            Distinguished professionals and academics leading the technical program
-          </p>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {committeeMembers.map((member, index) => (
+        <div
+          key={index}
+          className="p-6 rounded-lg bg-surface hover:shadow-xl transition-shadow duration-300 border border-surface-secondary/10"
+        >
+          <h3 className="font-semibold text-lg text-surface-primary mb-2">{member.name}</h3>
+          <p className="text-surface-secondary">{member.affiliation}</p>
         </div>
+      ))}
+    </div>
+  );
+}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {committeeMembers.map((member, index) => (
-            <div
-              key={index}
-              className="p-6 rounded-lg bg-surface hover:shadow-xl transition-shadow duration-300 border border-surface-secondary/10"
-            >
-              <h3 className="font-semibold text-lg text-surface-primary mb-2">{member.name}</h3>
-              <p className="text-surface-secondary">{member.affiliation}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+export default function TechnicalCommittee() {
+  return (
+    <CommitteeLayout title="Technical Program Committee">
+      <TechnicalCommitteeContent />
+    </CommitteeLayout>
   );
 }

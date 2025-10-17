@@ -16,7 +16,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToSection }) => {
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <BookOpen className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold">ICAC</span>
+              <span className="text-xl font-bold">IC3AI</span>
             </div>
             <p className="text-surface-secondary mb-4">
               Excellence in academic research and education, shaping the future through innovation and collaborative learning.
@@ -71,8 +71,8 @@ const Footer: React.FC<FooterProps> = ({ scrollToSection }) => {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                 <div>
-                  <p>123 Academic Avenue</p>
-                  <p>Research City, RC 12345</p>
+                  <p>I.T.S Engineering College</p>
+                  <p>46, Knowledge Park III, Greater Noida, Uttar Pradesh 201310</p>
                   <p>India</p>
                 </div>
               </div>
@@ -88,8 +88,8 @@ const Footer: React.FC<FooterProps> = ({ scrollToSection }) => {
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0" />
                 <div>
-                  <p>info@icac.edu.in</p>
-                  <p>admissions@icac.edu.in</p>
+                  <p>info@ic3ai.edu.in</p>
+                  <p>admissions@ic3ai.edu.in</p>
                 </div>
               </div>
             </div>
@@ -119,7 +119,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToSection }) => {
         {/* Bottom Section */}
         <div className="border-t border-surface pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-surface-secondary text-sm mb-4 md:mb-0">
-            © 2024 ICAC. All rights reserved.
+            © 2026 IC3AI. All rights reserved.
           </p>
           <div className="flex flex-wrap justify-center md:justify-end space-x-6 text-sm">
             <a href="#" className="text-surface-secondary hover:text-primary transition-colors">Privacy Policy</a>

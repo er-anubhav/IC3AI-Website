@@ -1,37 +1,47 @@
-import { CreditCard, CheckCircle, AlertCircle } from 'lucide-react';
+import { CreditCard, CheckCircle, AlertCircle, Calendar, Users, GraduationCap, Briefcase } from 'lucide-react';
+import React from 'react';
 
 interface RegistrationFee {
-  category: string;
+  registrationType: string;
   earlyBird: string;
-  regular: string;
-  description?: string;
+  lateRegistration: string;
+  foreignNationals: string;
+  icon: React.ReactNode;
 }
 
 export default function Registration() {
   const registrationFees: RegistrationFee[] = [
     {
-      category: 'IEEE Member',
-      earlyBird: '₹8,000',
-      regular: '₹10,000',
-      description: 'Valid IEEE membership required'
+      registrationType: 'CO-Authors/Attendees',
+      earlyBird: '₹2,000',
+      lateRegistration: '₹2,500',
+      foreignNationals: '$100',
+      icon: <Users className="w-6 h-6 text-primary" />
     },
     {
-      category: 'Non-IEEE Member',
-      earlyBird: '₹10,000',
-      regular: '₹12,000'
-    },
-    {
-      category: 'Student Member',
+      registrationType: 'Research Scholars/Post Doc/UG/PG',
       earlyBird: '₹6,000',
-      regular: '₹7,500',
-      description: 'Must provide valid student ID'
+      lateRegistration: '₹6,500',
+      foreignNationals: '$150',
+      icon: <GraduationCap className="w-6 h-6 text-primary" />
     },
     {
-      category: 'International Delegate',
-      earlyBird: '$300',
-      regular: '$400'
+      registrationType: 'Academicians',
+      earlyBird: '₹7,000',
+      lateRegistration: '₹7,500',
+      foreignNationals: '$200',
+      icon: <GraduationCap className="w-6 h-6 text-primary" />
+    },
+    {
+      registrationType: 'Industry Professionals',
+      earlyBird: '₹8,000',
+      lateRegistration: '₹8,500',
+      foreignNationals: '$200',
+      icon: <Briefcase className="w-6 h-6 text-primary" />
     }
   ];
+
+  <p>*note: This registration fee is only for conference participation/presentation.</p>
 
   const registrationSteps = [
     'Complete the online registration form',
@@ -53,29 +63,103 @@ export default function Registration() {
 
         {/* Registration Fees Table */}
         <div className="mb-16 overflow-x-auto">
-          <table className="w-full min-w-[600px]">
-            <thead>
-              <tr className="bg-surface-secondary/10">
-                <th className="py-4 px-6 text-left text-surface-primary font-semibold">Category</th>
-                <th className="py-4 px-6 text-left text-surface-primary font-semibold">Early Bird (Before Aug 15)</th>
-                <th className="py-4 px-6 text-left text-surface-primary font-semibold">Regular</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-surface-secondary/10">
-              {registrationFees.map((fee, index) => (
-                <tr key={index} className="hover:bg-surface-secondary/5">
-                  <td className="py-4 px-6">
-                    <div className="font-medium text-surface-primary">{fee.category}</div>
-                    {fee.description && (
-                      <div className="text-sm text-surface-secondary mt-1">{fee.description}</div>
-                    )}
-                  </td>
-                  <td className="py-4 px-6 text-surface-secondary">{fee.earlyBird}</td>
-                  <td className="py-4 px-6 text-surface-secondary">{fee.regular}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {registrationFees.map((fee, index) => (
+              <div key={index} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow p-6 border border-gray-200 dark:border-gray-700">
+                <div className="flex items-center mb-4">
+                  {fee.icon}
+                  <h3 className="text-lg font-semibold text-surface-primary ml-3">{fee.registrationType}</h3>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 pb-2">
+                    <span className="text-gray-600 dark:text-gray-400">Early Bird</span>
+                    <span className="text-lg font-bold text-primary">{fee.earlyBird}</span>
+                  </div>
+                  <div className="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 pb-2">
+                    <span className="text-gray-600 dark:text-gray-400">Late Registration</span>
+                    <span className="text-lg font-semibold text-surface-primary">{fee.lateRegistration}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-600 dark:text-gray-400">Foreign Nationals</span>
+                    <span className="text-lg font-semibold text-surface-primary">{fee.foreignNationals}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Important Dates */}
+        <div className="mb-16">
+          <h3 className="text-2xl font-semibold text-surface-primary text-center mb-8">Important Dates</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Calendar className="w-6 h-6 text-primary" />
+                </div>
+                <div className="ml-4">
+                  <h4 className="font-semibold text-surface-primary">Submission Portal Opens</h4>
+                  <p className="text-gray-600 dark:text-gray-400">__ month, 2026</p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Calendar className="w-6 h-6 text-primary" />
+                </div>
+                <div className="ml-4">
+                  <h4 className="font-semibold text-surface-primary">Full Paper Submission</h4>
+                  <p className="text-gray-600 dark:text-gray-400">__ month, 2026</p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Calendar className="w-6 h-6 text-primary" />
+                </div>
+                <div className="ml-4">
+                  <h4 className="font-semibold text-surface-primary">Acceptance Notification</h4>
+                  <p className="text-gray-600 dark:text-gray-400">__ month, 2026</p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Calendar className="w-6 h-6 text-primary" />
+                </div>
+                <div className="ml-4">
+                  <h4 className="font-semibold text-surface-primary">Camera Ready Submission</h4>
+                  <p className="text-gray-600 dark:text-gray-400">__  month, 2026</p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Calendar className="w-6 h-6 text-primary" />
+                </div>
+                <div className="ml-4">
+                  <h4 className="font-semibold text-surface-primary">Last Date of Registration</h4>
+                  <p className="text-gray-600 dark:text-gray-400">__ month, 2026</p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Calendar className="w-6 h-6 text-primary" />
+                </div>
+                <div className="ml-4">
+                  <h4 className="font-semibold text-surface-primary">Conference Dates</h4>
+                  <p className="text-gray-600 dark:text-gray-400">__ month, 2026</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Registration Process */}

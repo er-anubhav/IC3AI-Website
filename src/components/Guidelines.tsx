@@ -4,7 +4,7 @@ export default function Guidelines() {
   const guidelines = [
     {
       title: 'Paper Format',
-      description: 'All papers must be submitted in IEEE format. Maximum paper length is 6 pages.',
+      description: 'All papers must be Springer templet format submitted . Maximum paper length is 10-12 pages.',
       icon: FileText
     },
     {
@@ -20,8 +20,8 @@ export default function Guidelines() {
   ];
 
   const formatInstructions = [
-    'Use IEEE conference format',
-    'Maximum 6 pages including figures and references',
+    'Use the official Springer LaTeX or Word template',
+    'Page limit around 10-12 pages including references',
     'Font: Times New Roman',
     'Title: 24pt, Section Headings: 12pt, Body: 10pt',
     'Margins: 1 inch all around',
@@ -68,7 +68,7 @@ export default function Guidelines() {
             <div className="flex flex-col space-y-4">
               <button className="flex items-center justify-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors">
                 <Download className="w-5 h-5 mr-2" />
-                Download IEEE Template
+                Download Springer Templet
               </button>
               <button className="flex items-center justify-center px-6 py-3 bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-colors">
                 <FileText className="w-5 h-5 mr-2" />
