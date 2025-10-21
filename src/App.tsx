@@ -24,11 +24,10 @@ function App() {
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (savedTheme) {
       setIsDarkMode(savedTheme === 'dark');
     } else {
-      setIsDarkMode(systemPrefersDark);
+      setIsDarkMode(false); // Always default to light mode
     }
   }, []);
 
@@ -74,7 +73,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-surface transition-colors duration-300">
+    <div className="min-h-screen transition-colors duration-300 bg-surface">
       <Header 
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
@@ -126,18 +125,18 @@ function App() {
 
       {/* 10. Contact */}
       <section id="contact">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-surface-primary mb-2">Contact Us</h2>
-            <p className="text-lg text-surface-secondary max-w-2xl mx-auto">
+        <div className="container px-6 mx-auto">
+          <div className="mb-12 text-center">
+            <h2 className="mb-2 text-4xl font-bold text-surface-primary">Contact Us</h2>
+            <p className="max-w-2xl mx-auto text-lg text-surface-secondary">
               Please fill the provided form, and we will get back to you as soon as possible.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-10 items-start">
-            <div className="bg-card rounded-2xl p-8 shadow-custom-lg border border-surface">
+          <div className="grid items-start gap-10 md:grid-cols-2">
+            <div className="p-8 border bg-card rounded-2xl shadow-custom-lg border-surface">
               <form className="space-y-5" onSubmit={handleContactSubmit}>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-surface-primary mb-2">
+                  <label htmlFor="email" className="block mb-2 text-sm font-medium text-surface-primary">
                     Your email *
                   </label>
                   <input
@@ -146,11 +145,11 @@ function App() {
                     type="email"
                     required
                     placeholder="name@acme.com"
-                    className="w-full px-4 py-3 border border-surface rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 bg-surface text-surface-primary"
+                    className="w-full px-4 py-3 transition-all duration-200 border rounded-lg border-surface focus:ring-2 focus:ring-primary focus:border-transparent bg-surface text-surface-primary"
                   />
                 </div>
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-surface-primary mb-2">
+                  <label htmlFor="subject" className="block mb-2 text-sm font-medium text-surface-primary">
                     Subject *
                   </label>
                   <input
@@ -159,11 +158,11 @@ function App() {
                     type="text"
                     required
                     placeholder="Let us know how we can help you"
-                    className="w-full px-4 py-3 border border-surface rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 bg-surface text-surface-primary"
+                    className="w-full px-4 py-3 transition-all duration-200 border rounded-lg border-surface focus:ring-2 focus:ring-primary focus:border-transparent bg-surface text-surface-primary"
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-surface-primary mb-2">
+                  <label htmlFor="message" className="block mb-2 text-sm font-medium text-surface-primary">
                     Your message *
                   </label>
                   <textarea
@@ -172,21 +171,21 @@ function App() {
                     rows={6}
                     required
                     placeholder="Leave a comment..."
-                    className="w-full px-4 py-3 border border-surface rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 bg-surface text-surface-primary resize-none"
+                    className="w-full px-4 py-3 transition-all duration-200 border rounded-lg resize-none border-surface focus:ring-2 focus:ring-primary focus:border-transparent bg-surface text-surface-primary"
                   />
                 </div>
-                <button type="submit" className="w-full btn-primary py-3 rounded-lg text-white font-semibold">
+                <button type="submit" className="w-full py-3 font-semibold text-white rounded-lg btn-primary">
                   Submit
                 </button>
               </form>
             </div>
             <aside className="space-y-6">
-              <div className="bg-card rounded-2xl p-6 shadow-custom border border-surface">
-                <h3 className="text-2xl font-semibold text-surface-primary mb-3">Get in Touch</h3>
-                <p className="text-surface-secondary mb-4">You can contact us on any of the following platforms, and we will get back to you.</p>
+              <div className="p-6 border bg-card rounded-2xl shadow-custom border-surface">
+                <h3 className="mb-3 text-2xl font-semibold text-surface-primary">Get in Touch</h3>
+                <p className="mb-4 text-surface-secondary">You can contact us on any of the following platforms, and we will get back to you.</p>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
                       <Mail className="w-6 h-6 text-primary" />
                     </div>
                     <div>
@@ -195,7 +194,7 @@ function App() {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
                       <Phone className="w-6 h-6 text-primary" />
                     </div>
                     <div>
@@ -204,7 +203,7 @@ function App() {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
                       <MapPin className="w-6 h-6 text-primary" />
                     </div>
                     <div>
@@ -214,7 +213,7 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className="text-surface-secondary text-sm">
+              <div className="text-sm text-surface-secondary">
                 <strong>Note:</strong> For faster replies, please include a preferred time to call and a brief summary of your inquiry in the message.
               </div>
             </aside>
@@ -237,7 +236,7 @@ function App() {
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full shadow-custom-lg hover:bg-primary-dark transition-all duration-300 flex items-center justify-center z-50 no-print"
+          className="fixed z-50 flex items-center justify-center w-12 h-12 text-white transition-all duration-300 rounded-full bottom-8 right-8 bg-primary shadow-custom-lg hover:bg-primary-dark no-print"
         >
           <ArrowUp className="w-6 h-6" />
         </button>
