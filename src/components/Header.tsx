@@ -30,11 +30,11 @@ export default function Header({
   ];
 
   return (
-    <header className="w-full z-50">
+    <header className="z-50 w-full">
       {/* Top thin utility bar */}
-      <div className="w-full bg-red-800 text-white text-sm">
-        <div className="container mx-auto px-6 py-2 flex justify-between items-center">
-          <div className="hidden sm:flex items-center gap-4">
+      <div className="w-full text-sm text-white bg-red-800">
+        <div className="container flex items-center justify-between px-6 py-2 mx-auto">
+          <div className="items-center hidden gap-4 sm:flex">
             <button 
               onClick={() => scrollToSection('call-for-papers')} 
               className="flex items-center gap-2 hover:underline"
@@ -78,7 +78,7 @@ export default function Header({
               <span className="opacity-60">|</span>
               <button 
                 onClick={() => setShowDashboard?.(true)} 
-                className="flex items-center gap-2 hover:text-red-300 transition-colors"
+                className="flex items-center gap-2 transition-colors hover:text-red-300"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -89,9 +89,9 @@ export default function Header({
             </div>
             {/* <span className="opacity-60">|</span> */}
             <div className="flex items-center gap-3">
-              {/* <button className="text-white text-xs hover:underline">IN</button>
-              <button className="text-white text-xs hover:underline">IG</button>
-              <button className="text-white text-xs hover:underline">FB</button> */}
+              {/* <button className="text-xs text-white hover:underline">IN</button>
+              <button className="text-xs text-white hover:underline">IG</button>
+              <button className="text-xs text-white hover:underline">FB</button> */}
             </div>
           </div>
         </div>
@@ -99,17 +99,17 @@ export default function Header({
 
       {/* Middle title area */}
       <div className="w-full bg-white">
-        <div className="container mx-auto px-6 py-6 flex items-center justify-between">
+        <div className="container flex items-center justify-between px-6 py-6 mx-auto">
           <div className="flex items-center gap-9">
-            <img src={conferenceImage} alt="ITS Logo" className="w-28 h-28 object-contain" />
+            <img src={conferenceImage} alt="ITS Logo" className="object-contain w-28 h-28" />
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold text-red-800">I.T.S ENGINEERING COLLEGE </h1>
-              <p className="text-sm text-surface-secondary mt-2">Approved by the AICTE , Accreditted by the NBA and the NAAC , Affiliated with Dr. A. P. J. Abdul Kalam Technical University , Lucknow</p>
+              <h1 className="text-3xl font-bold text-red-800 md:text-4xl">I.T.S ENGINEERING COLLEGE </h1>
+              <p className="mt-2 text-sm text-surface-secondary">Approved by the AICTE , Accreditted by the NBA and the NAAC , Affiliated with Dr. A. P. J. Abdul Kalam Technical University , Lucknow</p>
             </div>
           </div>
           <div className="hidden md:block">
-            <div className="w-28 h-28 bg-white flex items-center justify-center">
-              <img src={conferenceImage1} alt="" className="w-24 h-24 object-contain" />
+            <div className="flex items-center justify-center bg-white w-28 h-28">
+              <img src={conferenceImage1} alt="" className="object-contain w-24 h-24" />
             </div>
           </div>
         </div>
@@ -117,11 +117,11 @@ export default function Header({
 
       {/* Red navigation bar */}
       <nav className="w-full bg-red-700">
-        <div className="container mx-auto px-6">
+        <div className="container px-6 mx-auto">
           <div className="flex items-center justify-between">
-            <div className="hidden md:flex items-center gap-8 py-4">
+            <div className="items-center hidden gap-8 py-4 md:flex">
               {menuItems.map((item) => (
-                <button key={item.id} onClick={() => scrollToSection(item.id)} className="text-white font-semibold hover:underline">
+                <button key={item.id} onClick={() => scrollToSection(item.id)} className="font-semibold text-white hover:underline">
                   {item.label}
                 </button>
               ))}
@@ -131,7 +131,7 @@ export default function Header({
             <div className="flex items-center gap-4 py-4">
               <div className="md:hidden">
                 <button
-                  className="p-2 rounded-lg text-white"
+                  className="p-2 text-white rounded-lg"
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                   aria-label="Toggle navigation"
                 >
@@ -142,9 +142,9 @@ export default function Header({
           </div>
           {/* Mobile menu items */}
           {isMenuOpen && (
-            <div className="md:hidden py-2 flex flex-col gap-2">
+            <div className="flex flex-col gap-2 py-2 md:hidden">
               {menuItems.map((item) => (
-                <button key={item.id} onClick={() => { scrollToSection(item.id); setIsMenuOpen(false); }} className="text-white text-left py-2">
+                <button key={item.id} onClick={() => { scrollToSection(item.id); setIsMenuOpen(false); }} className="py-2 text-left text-white">
                   {item.label}
                 </button>
               ))}
