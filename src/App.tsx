@@ -22,6 +22,18 @@ function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+  // Add overflow hidden to body when dashboard is open
+  useEffect(() => {
+    if (showDashboard) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [showDashboard]);
+
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
@@ -88,7 +100,7 @@ function App() {
         <Hero scrollToSection={scrollToSection} />
       </section>
 
-      {/* 2. About VIPS */}
+      {/* 2. About ITS */}
       <section id="about" className="py-20 bg-surface">
         <About />
       </section>

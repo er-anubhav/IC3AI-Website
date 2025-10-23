@@ -4,7 +4,7 @@ export default function Guidelines() {
   const guidelines = [
     {
       title: 'Paper Format',
-      description: 'All papers must be Springer templet format submitted . Maximum paper length is 10-12 pages.',
+      description: 'All papers must be Springer template format submitted . Maximum paper length is 10-12 pages.',
       icon: FileText
     },
     {
@@ -66,10 +66,15 @@ export default function Guidelines() {
               ))}
             </ul>
             <div className="flex flex-col space-y-4">
-              <button className="flex items-center justify-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors">
+              <a 
+                href="https://www.springer.com/gp/authors-editors/conference-proceedings/editors/word-template/19338734"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
+              >
                 <Download className="w-5 h-5 mr-2" />
-                Download Springer Templet
-              </button>
+                Download Springer Template
+              </a>
               <button className="flex items-center justify-center px-6 py-3 bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-colors">
                 <FileText className="w-5 h-5 mr-2" />
                 View Sample Paper

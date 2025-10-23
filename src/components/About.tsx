@@ -30,21 +30,10 @@ const About = () => {
         <div className="flex flex-col md:flex-row gap-8 items-start">
             <div className="flex-1">
               <p className="text-justify">
-                I.T.S Engineering College, situated in Greater Noida, stands as a
-                distinguished institution for Engineering and Management.
-                Established by prominent professionals with a commitment to
-                delivering high-quality, industry-focused education at an affordable
-                cost, the college has a rich history spanning approximately three
-                decades. The ITS Education Group, with its roots firmly planted in
-                North India, has become a significant player in higher education.
+               I.T.S Engineering College, located in Greater Noida, is a distinguished institution for Engineering and Management, founded by leading professionals committed to delivering high-quality, industry-focused education at an affordable cost. With a rich history spanning around three decades, the ITS Education Group has emerged as a key player in higher education in North India, operating nine institutes with more than 20,000 students and a dedicated staff of over 1,250. The group excels in various disciplines, including Information Technology, Engineering, Management, Dental, Pharmacy, and Physiotherapy. Established in 2006 under the visionary leadership of Chairman Dr. R.P. Chadha, ITS Engineering College holds NBA accreditation, showcasing its dedication to providing top-notch education. Approved by AICTE and affiliated with AKTU-Lucknow,
 
               <p className="text-justify mt-5 mb-5">
-            Operating with excellence in various disciplines, including
-            Information Technology, Engineering, Management, Dental, Pharmacy,
-            and Physiotherapy, the ITS Education Group has been a prominent
-            force since its inception in 2006 under the visionary leadership of
-            Chairman Dr. R.P. Chadha. The group oversees nine institutes with a 
-            collective student body exceeding 20,000 and a dedicated staff of over 1,250.
+            The college offers diverse programs, such as B. Tech in Civil, Computer Science & Engineering (CSE), CSE-Artificial Intelligence and Machine Learning, CSE-Data Science, Electronics and Communication Engineering, Electronics Engineering (VLSI Design and Technology), Electrical and Computer Engineering, Mechanical Engineering, as well as an MBA program in Marketing, Finance, Human Resource, Operations, International Business and Information Technology.
           </p>
               </p>
             </div>
@@ -56,19 +45,36 @@ const About = () => {
               />
             </div>
           </div>
-          
           <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg mb-8">
-            <h3 className="text-lg font-semibold mb-4 text-tw-prose-headings">Key Achievements</h3>
+            <h3 className="text-lg font-semibold mb-4 text-tw-prose-headings">Few Highlights</h3>
             <ul className="list-disc pl-5 space-y-2">
-              <li>NBA Accredited Programs</li>
-              <li>NAAC Accredited Institution</li>
-              <li>State-of-the-art Research Facilities</li>
-              <li>Strong Industry Partnerships</li>
-              <li>Excellent Placement Record</li>
-              <li>Modern Infrastructure and Labs</li>
+              <li>Part of 29-year old exceptional education legacy of ITS</li>
+              <li>Approved Business Incubation Centre by DST, MSME and Govt. of India</li>
+              <li>Pool of Illustrious faculty with Doctorates, IITians & NITians</li>
+              <li>Technology based industrial collaboration via Skill Enhancement Centre (Apple iOS, SMC Pneumatics, National Instruments, Rockwell Automation, Software Testing, SYSCOM, Android Apps Development, R Systems and Softpro)</li>
+              <li>NBA accreditation in B.Tech – ECE branch</li>
+              <li>Outstanding placement record in B.Tech and MBA programs</li>
+              <li>Strong and Resourceful network of over 5000 alumni</li>
+              <li>Regular expert talks, national and international seminars and conferences with renowned speakers from Industry and academia</li>
+              <li>State of Art Infrastructure</li>
             </ul>
           </div>
-          <p className="text-justify mt-5 mb-5">
+          
+          <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg mb-8">
+            <h3 className="text-lg font-semibold mb-4 text-tw-prose-headings">Latest Awards & Honors</h3>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>Ranked amongst top 151-300 band in NIRF Innovation ranking 2023 across pan India</li>
+              <li>Sherpa EDU LEADER 2023 to honorable Vice Chairman Mr. Sohil Chadha by re:thinkindia for his visionary approach and dedication with an immense contribution to Entrepreneurship development, incubation, innovation, digitization nururing techno-managerial and paramedical education</li>
+              <li>Honoured with the Collegedunia Excellence Award 2023 for its outstanding contributions to "Excellence in Engineering and Management Education."</li>
+              <li>Ranked amongst top Five by CSR in all India ranking of "Outstanding Engineering Colleges of Excellence” in 2023</li>
+              <li>Pan India highest ranking by Institution’s Innovation Council (IIC), Ministry of Education, Govt. of India in the last five years</li>
+              <li>*4 Star in 2023 *4 Star in 2022 * 4 Star in 2021 * 5 Star in 2020 *3 Star in 2019</li>
+              <li>Excellent ARIA Rank 2021 & ARIA Ranking 6-25 amongst 'Private Institutions in 2020</li>
+              <li>Best Leadership Entrepreneur Kotler Award to honorable Vice Chairman Mr Sohil Chadha by Kotler Awards in 2020</li>
+              <li>CSR Excellence in Education Award by Competition Success Review in 2020</li>
+            </ul>
+          </div>
+          {/* <p className="text-justify mt-5 mb-5">
             ITS Engineering College has established itself as a center of excellence in technical education,
             with a strong focus on research and innovation. The institution maintains high academic standards
             and provides students with opportunities for holistic development through various technical and
@@ -81,43 +87,15 @@ const About = () => {
             Electronics and Communication Engineering, Electronics Engineering
             (VLSI Design and Technology), Electrical and Computer Engineering,
             Mechanical Engineering, and an MBA program.
-          </p>
+          </p> */}
         </div>
         <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
         <div className="prose max-w-none mx-2">
           <h1 className="heading text-tw-prose-headings font-extrabold text-2xl mb-4 leading-tight border-l-4 border-red-600 pl-4 pr-4">
-            About CSE
+            About Department of Computer science
           </h1>
           <p className="text-justify mt-5">
-            The Computer Science & Engineering Department at ITSEC offers a UG
-            program in Computer Science & Engineering is designed to equip
-            individuals with the necessary computer skills to succeed in the
-            industry, and provide practical knowledge to prepare them for
-            professional readiness. The program is structured to cover both the
-            theoretical foundations and latest developments in computing
-            solutions. Throughout the program, CSE students will develop
-            expertise in algorithm and software design, development, and
-            testing, and will learn to create effective computing solutions that
-            address various social, economic, and organizational domains. It
-            also offers B. Tech in Artificial Learning and Machine Learning at
-            <br />
-            <br />
-            Some of the major research areas which the faculty members and
-            students working on are Computer Networks, Database Systems,
-            Multimedia, Image Processing, Software Engineering, Computer
-            Architecture, Information System – Security and Data Mining.
-            <br />
-            <br />
-            ITS Engineering College is an undergraduate programme with advanced
-            learning solutions imparting knowledge of advanced innovations like
-            Machine Learning, often called Deep Learning and Artificial
-            Intelligence. Apart from CSE and AIML, ITSEC offers B. Tech in the
-            specialization of Data Science which is a rapidly growing field that
-            involves the analytical technique of extracting usable information
-            from a pool of data for the benefit of businesses. Corporations
-            require this valuable data for their strategic planning,
-            forecasting, fraud detection, and decision-making amongst many other
-            uses.
+            The Computer Science & Engineering Department at ITSEC offers a UG program in Computer Science & Engineering is designed to equip individuals with the necessary computer skills to succeed in the industry, and provide practical knowledge to prepare them for professional readiness. The program is structured to cover both the theoretical foundations and latest developments in computing solutions. Throughout the program, CSE students will develop expertise in algorithm and software design, development, and testing, and will learn to create effective computing solutions that address various social, economic, and organizational domains. It also offers B. Tech in Artificial Learning and Machine Learning at ITS Engineering College is an undergraduate programme with advanced learning solutions imparting knowledge of advanced innovations like Machine Learning, often called Deep Learning and Artificial Intelligence. Apart from CSE and AIML, ITSEC offers B. Tech in the specialization of Data Science which is a rapidly growing field that involves the analytical technique of extracting usable information from a pool of data for the benefit of businesses. Corporations require this valuable data for their strategic planning, forecasting, fraud detection, and decision-making amongst many other uses.
           </p>
         </div>
         <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
