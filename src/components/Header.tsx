@@ -74,9 +74,18 @@ export default function Header({
           </div>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-4">
-              <a className="hover:underline">Fee Payment</a>
+              {/* <a className="hover:underline">Fee Payment</a> */}
               <span className="opacity-60">|</span>
-              <button onClick={() => setShowDashboard?.(true)} className="hover:underline">ERP login</button>
+              <button 
+                onClick={() => setShowDashboard?.(true)} 
+                className="flex items-center gap-2 hover:text-red-300 transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+              </button>
             </div>
             {/* <span className="opacity-60">|</span> */}
             <div className="flex items-center gap-3">
@@ -92,10 +101,10 @@ export default function Header({
       <div className="w-full bg-white">
         <div className="container mx-auto px-6 py-6 flex items-center justify-between">
           <div className="flex items-center gap-9">
-            <img src={conferenceImage} alt="VIPS Logo" className="w-28 h-28 object-contain" />
+            <img src={conferenceImage} alt="ITS Logo" className="w-28 h-28 object-contain" />
             <div>
               <h1 className="text-3xl md:text-4xl font-bold text-red-800">I.T.S ENGINEERING COLLEGE </h1>
-              <p className="text-sm text-surface-secondary mt-2">Approved by AICTE, Institution by NAAC, NBA Accredited, Affiliated to ABDUL KALAM TECHNICAL UNIVERSITY </p>
+              <p className="text-sm text-surface-secondary mt-2">Approved by the AICTE , Accreditted by the NBA and the NAAC , Affiliated with Dr. A. P. J. Abdul Kalam Technical University , Lucknow</p>
             </div>
           </div>
           <div className="hidden md:block">

@@ -1,4 +1,5 @@
-import { Calendar, FileCheck, Award } from 'lucide-react';
+import { Calendar, FileCheck, Award, ChevronDown } from 'lucide-react';
+import { useState } from 'react';
 
 export default function CallForPapers() {
   const importantDates = [
@@ -125,6 +126,17 @@ export default function CallForPapers() {
     }
   ];
 
+  // Accordion open/close state per track
+  const [openTracks, setOpenTracks] = useState(() => tracks.map(() => false));
+
+  const toggleTrack = (i: number) => {
+    setOpenTracks((prev) => {
+      const next = [...prev];
+      next[i] = !next[i];
+      return next;
+    });
+  };
+
   return (
     <section id="call-for-papers" className="py-20 bg-surface">
       <div className="container mx-auto px-6">
@@ -163,18 +175,28 @@ export default function CallForPapers() {
           <div className="grid md:grid-cols-2 gap-8">
             {tracks.map((track, index) => (
               <div key={index} className="p-6 rounded-lg bg-surface hover:shadow-xl transition-shadow duration-300 border border-surface-secondary/10">
-                <h4 className="text-xl font-semibold mb-6 text-surface-primary flex items-center">
-                  <Award className="w-6 h-6 text-primary mr-2" />
-                  {track.title}
-                </h4>
-                <div className="grid gap-3">
-                  {track.topics.map((topic, topicIndex) => (
-                    <div key={topicIndex} className="flex items-start space-x-2">
-                      <FileCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="text-surface-secondary">{topic}</span>
-                    </div>
-                  ))}
-                </div>
+                <button
+                  onClick={() => toggleTrack(index)}
+                  aria-expanded={openTracks[index]}
+                  className="w-full text-left flex items-center justify-between mb-4"
+                >
+                  <h4 className="text-xl font-semibold text-surface-primary flex items-center">
+                    <Award className="w-6 h-6 text-primary mr-2" />
+                    {track.title}
+                  </h4>
+                  <ChevronDown className={`w-5 h-5 text-surface-secondary transition-transform ${openTracks[index] ? 'rotate-180' : ''}`} />
+                </button>
+
+                {openTracks[index] && (
+                  <div className="grid gap-3">
+                    {track.topics.map((topic, topicIndex) => (
+                      <div key={topicIndex} className="flex items-start space-x-2">
+                        <FileCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="text-surface-secondary">{topic}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
