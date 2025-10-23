@@ -1,6 +1,6 @@
 import { Menu, X } from 'lucide-react';
 import conferenceImage from "../assets/mainlogo.webp";
-import conferenceImage1 from "../assets/International_Conference_on_Advances_in_(1)[1].png";
+import conferenceImage1 from "../assets/conference-logo.png";
 
 interface HeaderProps {
   isMenuOpen: boolean;

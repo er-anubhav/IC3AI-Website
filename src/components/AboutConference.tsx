@@ -1,3 +1,6 @@
+import confLogo from "../assets/conference-logo.png";
+import springerLogo from "../assets/springer.png";
+
 export default function AboutConference() {
   return (
     <section id="about-conference" className="  pt-1 pb-20 bg-surface">
@@ -5,7 +8,7 @@ export default function AboutConference() {
         <div className="text-center mb-12">
           <div className="flex flex-col items-center gap-6">
             <img
-              src="/src/assets/International_Conference_on_Advances_in_(1)[1].png"
+              src={confLogo}
               alt="IC3AI Conference Logo"
               className="w-48 h-auto mb-4"
             />
@@ -78,7 +81,7 @@ We welcome active participation from scholars, practitioners, and students acros
         </div>
         <div className="flex justify-center mt-12">
           <img
-            src="/src/assets/springer.png"
+            src={springerLogo}
             alt="Springer Logo"
             className="w-64 h-auto object-contain"
           />
