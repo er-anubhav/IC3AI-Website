@@ -67,7 +67,7 @@ export default function Guidelines() {
             </ul>
             <div className="flex flex-col space-y-4">
               <a 
-                href="https://www.springer.com/gp/authors-editors/conference-proceedings/editors/word-template/19338734"
+                href="https://resource-cms.springernature.com/springer-cms/rest/v1/content/19338734/data/v1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"
