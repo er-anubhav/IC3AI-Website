@@ -120,11 +120,8 @@ export function OrganizingCommitteeContent() {
     {
       title: "Website Committee",
       members: [
-        { name: "Prof. Prachi Jain", affiliation: "CSE, ITSEC" },
-        { name: "Prof. Monika", affiliation: "CSE, ITSEC" },
-        { name: "Mr. Sandeep Yadav", affiliation: "CSE Student, ITSEC" },
-        { name: "Moh Faizan", affiliation: "CSE Student, ITSEC" },
-        { name: "Mr. Suyash Gautam", affiliation: "CSE-DS Student, ITSEC" },
+        { name: "Anubhav Tripathi", affiliation: "CSE-Aiml, ITSEC" },
+        { name: "Deepak Kumar", affiliation: "CSE-Aiml, ITSEC" },
       ]
     },
     {
