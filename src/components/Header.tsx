@@ -1,10 +1,6 @@
 import { Menu, X } from 'lucide-react';
 import conferenceImage from "../assets/mainlogo.webp";
-<<<<<<< HEAD
-import conferenceImage1 from "../assets/conference-logo.png";
-=======
 import conferenceImage1 from "../assets/International_Conference_on_Advances_in_(1)[1].jpg";
->>>>>>> upstream/HEAD
 
 interface HeaderProps {
   isMenuOpen: boolean;
@@ -112,19 +108,14 @@ export default function Header({
             </div>
           </div>
           <div className="hidden md:block">
-<<<<<<< HEAD
             <div className="flex items-center justify-center bg-white w-28 h-28">
-              <img src={conferenceImage1} alt="" className="object-contain w-24 h-24" />
-=======
-            <div className="w-28 h-28 bg-white flex items-center justify-center">
               {/* <img
             src="/src/assets/springer.png"
             alt="Springer Logo"
-            className="w-64 h-10 object-contain"
+            className="object-contain w-64 h-10"
           /> */}
-              <img src={conferenceImage1} alt="" className="w-24 h-24 object-contain" />
+              <img src={conferenceImage1} alt="" className="object-contain w-24 h-24" />
               
->>>>>>> upstream/HEAD
             </div>
           </div>
         </div>
