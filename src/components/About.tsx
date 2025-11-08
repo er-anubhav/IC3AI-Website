@@ -102,16 +102,16 @@ const About = () => {
         {/* About Conference Section
         <div className="prose max-w-screen-lg mx-4">
           <h1 className="heading border-l-4 border-red-600 pl-4 pr-4 text-tw-prose-headings font-extrabold text-2xl mb-4 leading-tight">
-            About ICAICS-2025
+            About IC3AI-2026
           </h1>
           <p className="text-justify mb-5 mt-5">
-            The International Conference on Artificial Intelligence and Cyber Security (ICAICS-2025) 
+            The International Conference on Artificial Intelligence and Cyber Security (IC3AI-2026) 
             is a premier forum for the presentation of new advances and research results in the fields 
             of Artificial Intelligence and Cyber Security. The conference will bring together leading 
             researchers, engineers and scientists in the domain of interest from around the world.
           </p>
           <p className="text-justify mb-5">
-            ICAICS-2025 aims to provide a platform for researchers and practitioners from both academia 
+            IC3AI-26 aims to provide a platform for researchers and practitioners from both academia 
             and industry to meet and share cutting-edge development in the field. The conference 
             will feature keynote speeches by distinguished scholars, regular paper presentations, 
             and special sessions on emerging topics.
