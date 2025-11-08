@@ -8,7 +8,11 @@ export default function AboutConference() {
         <div className="text-center mb-12">
           <div className="flex flex-col items-center gap-6">
             <img
+<<<<<<< HEAD
               src={confLogo}
+=======
+              src="/src/assets/International_Conference_on_Advances_in_(1)[1].jpg"
+>>>>>>> upstream/HEAD
               alt="IC3AI Conference Logo"
               className="w-48 h-auto mb-4"
             />
@@ -17,14 +21,14 @@ export default function AboutConference() {
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto text-black">
+        <div className="max-w-8xl mx-auto text-justify text-black">
           <div className="text-base md:text-lg font-roboto leading-relaxed mb-6">
             The Department of Computer Science and Engineering,
 I.T.S Engineering College, Gr. Noida
 is pleased to announce the International Conference on Computational Intelligence, Cybersecurity and Artificial Intelligence (IC3AI-2026).
 
 The conference will be organized at I.T.S Engineering College, Gr. Noida.
-IC3AI-2025 aims to provide a premier interdisciplinary platform for researchers, academicians, and professionals.
+IC3AI-2026 aims to provide a premier interdisciplinary platform for researchers, academicians, and professionals.
 It seeks to promote the exchange of knowledge, ideas, and innovations in Artificial Intelligence, Cybersecurity, and Computational Intelligence.
           </div>
 

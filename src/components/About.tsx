@@ -102,18 +102,32 @@ const About = () => {
         </div>
         <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
         {/* About Conference Section
+<<<<<<< HEAD
         <div className="max-w-screen-lg mx-4 prose">
           <h1 className="pl-4 pr-4 mb-4 text-2xl font-extrabold leading-tight border-l-4 border-red-600 heading text-tw-prose-headings">
             About ICAICS-2025
           </h1>
           <p className="mt-5 mb-5 text-justify">
             The International Conference on Artificial Intelligence and Cyber Security (ICAICS-2025) 
+=======
+        <div className="prose max-w-screen-lg mx-4">
+          <h1 className="heading border-l-4 border-red-600 pl-4 pr-4 text-tw-prose-headings font-extrabold text-2xl mb-4 leading-tight">
+            About IC3AI-2026
+          </h1>
+          <p className="text-justify mb-5 mt-5">
+            The International Conference on Artificial Intelligence and Cyber Security (IC3AI-2026) 
+>>>>>>> upstream/HEAD
             is a premier forum for the presentation of new advances and research results in the fields 
             of Artificial Intelligence and Cyber Security. The conference will bring together leading 
             researchers, engineers and scientists in the domain of interest from around the world.
           </p>
+<<<<<<< HEAD
           <p className="mb-5 text-justify">
             ICAICS-2025 aims to provide a platform for researchers and practitioners from both academia 
+=======
+          <p className="text-justify mb-5">
+            IC3AI-26 aims to provide a platform for researchers and practitioners from both academia 
+>>>>>>> upstream/HEAD
             and industry to meet and share cutting-edge development in the field. The conference 
             will feature keynote speeches by distinguished scholars, regular paper presentations, 
             and special sessions on emerging topics.
