@@ -135,13 +135,13 @@ export function OrganizingCommitteeContent() {
     {
       title: "Student Co-Ordinators",
       members: [
-        { name: "Mr. Krish Verma", affiliation: "CSE Student, ITSEC" },
-        { name: "Mr. Vipul Upadhyay", affiliation: "CSE Student, ITSEC" },
-        { name: "Ms. Vaishali Chaurasiya", affiliation: "CSE Student, ITSEC" },
-        { name: "Mr. Yatin Kasnyal", affiliation: "CSE Student, ITSEC" },
-        { name: "Mr. Devraj Singh", affiliation: "CSE Student, ITSEC" },
-        { name: "Ms. Nirbhika Khajuriya", affiliation: "CSE Student, ITSEC" },
-        { name: "Ms. Prinshi Paliwal", affiliation: "CSE Student, ITSEC" },
+        { name: "Anubhav Tripathi", affiliation: "CSE-Aiml, ITSEC" },
+        { name: "Deepak Kumar", affiliation: "CSE-Aiml, ITSEC" },
+        // { name: "Ms. Vaishali Chaurasiya", affiliation: "CSE Student, ITSEC" },
+        // { name: "Mr. Yatin Kasnyal", affiliation: "CSE Student, ITSEC" },
+        // { name: "Mr. Devraj Singh", affiliation: "CSE Student, ITSEC" },
+        // { name: "Ms. Nirbhika Khajuriya", affiliation: "CSE Student, ITSEC" },
+        // { name: "Ms. Prinshi Paliwal", affiliation: "CSE Student, ITSEC" },
       ]
     },
   ];
